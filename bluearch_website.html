@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blue Arch Construction & Interiors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --sky: #5bc8f5;
+      --sky-light: #b8e8f9;
+      --sky-pale: #dff4fd;
+      --sky-deep: #1a9fd4;
+      --navy: #0d2b45;
+      --red: #e02020;
+      --white: #ffffff;
+      --gray: #f4f9fc;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--white);
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 2px solid var(--sky-light);
+      box-shadow: 0 2px 24px rgba(91,200,245,0.13);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-logo svg {
+      width: 42px; height: 42px;
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-logo-text span:first-child {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--navy);
+      letter-spacing: 1px;
+    }
+
+    .nav-logo-text span:last-child {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--sky-deep);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--navy);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--sky);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--sky-deep); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--sky-deep);
+      color: white !important;
+      padding: 10px 22px;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--navy) !important; }
+    .nav-cta::after { display: none !important; }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #e8f8ff 0%, #b8e8f9 40%, #5bc8f5 100%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 64px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 520px; height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%);
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,159,212,0.18) 0%, transparent 70%);
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(26,159,212,0.4);
+      color: var(--sky-deep);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span {
+      color: var(--sky-deep);
+    }
+
+    .hero-sub {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--sky-deep);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: #2c5573;
+      line-height: 1.8;
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 18px rgba(13,43,69,0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--sky-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(26,159,212,0.35);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      background: var(--navy);
+      color: white;
+    }
+
+    .hero-images {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 14px;
+      height: 500px;
+    }
+
+    .hero-img-main {
+      grid-column: 1 / 3;
+      grid-row: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(13,43,69,0.22);
+    }
+
+    .hero-img-sm {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(13,43,69,0.18);
+    }
+
+    .hero-images img,
+    .hero-img-main img,
+    .hero-img-sm img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Photo placeholders using real Unsplash URLs */
+    .img-construction {
+      background: linear-gradient(135deg, #1a9fd4, #0d2b45);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 14px; letter-spacing: 1px;
+      text-align: center; padding: 12px;
+    }
+
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      background: var(--navy);
+      padding: 36px 64px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stat-item {
+      border-right: 1px solid rgba(255,255,255,0.12);
+      padding: 10px 0;
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--sky);
+    }
+
+    .stat-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+
+    /* ===== SECTION BASE ===== */
+    section { padding: 90px 64px; }
+
+    .section-tag {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--sky-deep);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .section-title span { color: var(--sky-deep); }
+
+    .section-desc {
+      font-size: 16px;
+      color: #446e87;
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    /* ===== SERVICES ===== */
+    #services {
+      background: var(--gray);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .services-header .section-desc {
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 12px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 24px rgba(91,200,245,0.1);
+      border: 1px solid var(--sky-light);
+      transition: all 0.35s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--sky), var(--sky-deep));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(91,200,245,0.2);
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 54px; height: 54px;
+      background: var(--sky-pale);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+
+    .service-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: #6a8fa3;
+      line-height: 1.7;
+    }
+
+    /* ===== ABOUT ===== */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-images {
+      position: relative;
+    }
+
+    .about-img-main {
+      border-radius: 16px;
+      overflow: hidden;
+      height: 420px;
+      box-shadow: 0 16px 52px rgba(13,43,69,0.18);
+    }
+
+    .about-img-main img { width: 100%; height: 100%; object-fit: cover; }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      background: var(--sky-deep);
+      color: white;
+      padding: 20px 24px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 8px 28px rgba(26,159,212,0.35);
+    }
+
+    .about-badge strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      display: block;
+    }
+
+    .about-badge span {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .about-content .section-desc { margin-bottom: 28px; }
+
+    .about-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+
+    .about-list li span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--sky);
+      flex-shrink: 0;
+    }
+
+    /* ===== GALLERY ===== */
+    #gallery {
+      background: var(--navy);
+      color: white;
+    }
+
+    #gallery .section-title { color: white; }
+    #gallery .section-tag { color: var(--sky); }
+    #gallery .section-desc { color: rgba(255,255,255,0.65); }
+
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 260px 260px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item:first-child { grid-row: 1 / 3; }
+
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,43,69,0.7) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-overlay-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: white;
+    }
+
+    /* photo placeholders */
+    .ph {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; color: rgba(255,255,255,0.5);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px; letter-spacing: 1px;
+    }
+
+    .ph-1 { background: linear-gradient(135deg, #1a9fd4 0%, #0d2b45 100%); }
+    .ph-2 { background: linear-gradient(135deg, #0d6ea1 0%, #1a9fd4 100%); }
+    .ph-3 { background: linear-gradient(135deg, #1a9fd4 0%, #2ca8d4 100%); }
+    .ph-4 { background: linear-gradient(135deg, #0a4f7a 0%, #1a9fd4 100%); }
+    .ph-5 { background: linear-gradient(135deg, #1a9fd4 0%, #0d6ea1 100%); }
+
+    /* ===== PROPRIETOR ===== */
+    #proprietor {
+      background: linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-light) 100%);
+      text-align: center;
+    }
+
+    .prop-card {
+      max-width: 640px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      padding: 52px 48px;
+      box-shadow: 0 20px 60px rgba(91,200,245,0.2);
+      border: 1px solid var(--sky-light);
+    }
+
+    .prop-avatar {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky), var(--sky-deep));
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: white;
+      box-shadow: 0 8px 28px rgba(26,159,212,0.35);
+    }
+
+    .prop-tag {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--sky-deep);
+      margin-bottom: 8px;
+    }
+
+    .prop-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .prop-qual {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--sky-deep);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .prop-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .prop-contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--navy);
+    }
+
+    .prop-contact-row .icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--sky-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact {
+      background: var(--navy);
+      color: white;
+    }
+
+    #contact .section-title { color: white; }
+    #contact .section-tag { color: var(--sky); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .contact-info { padding-top: 10px; }
+
+    .contact-info p {
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-item-icon {
+      width: 44px; height: 44px;
+      background: rgba(91,200,245,0.15);
+      border: 1px solid rgba(91,200,245,0.3);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-item-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 4px;
+    }
+
+    .contact-item-value {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(91,200,245,0.2);
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    .form-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: white;
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(91,200,245,0.25);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: white;
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--sky);
+    }
+
+    .form-group select option { background: #0d2b45; }
+
+    .form-group textarea { height: 110px; resize: none; }
+
+    .form-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--sky-deep), var(--sky));
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .form-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(91,200,245,0.35);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #070f1a;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 28px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    footer .footer-brand {
+      font-weight: 700;
+      color: var(--sky);
+      font-size: 15px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.6s; }
+
+    /* ===== COMPASS DIVIDER ===== */
+    .divider {
+      text-align: center;
+      color: var(--sky-light);
+      font-size: 28px;
+      margin: 0;
+      line-height: 1;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 20px; }
+      #hero { grid-template-columns: 1fr; padding: 120px 32px 60px; }
+      .hero-images { height: 300px; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      #about { grid-template-columns: 1fr; gap: 48px; padding: 60px 32px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-item:first-child { grid-row: auto; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      section { padding: 60px 32px; }
+      footer { flex-direction: column; gap: 10px; padding: 24px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="5,38 21,6 37,38" fill="none" stroke="#0d2b45" stroke-width="4"/>
+      <path d="M12 32 Q21 15 30 32" fill="none" stroke="#e02020" stroke-width="3"/>
+      <line x1="10" y1="32" x2="32" y2="32" stroke="#1a9fd4" stroke-width="2"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span>BLUE ARCH</span>
+      <span>Construction & Interiors</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Projects</a></li>
+    <li><a href="#proprietor">Team</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-tag fade-up">⬡ Dharapuram's Trusted Builder</div>
+    <h1 class="hero-title fade-up delay-1">We Build<br/>The Way <span>You Want</span></h1>
+    <p class="hero-sub fade-up delay-2">Blue Arch Construction & Interiors</p>
+    <p class="hero-desc fade-up delay-3">
+      From dream homes to commercial landmarks — we deliver end-to-end construction, 
+      stunning interiors, and precision structural design with integrity and craftsmanship.
+    </p>
+    <div class="hero-btns fade-up delay-4">
+      <a href="#contact" class="btn-primary">Get a Free Quote</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-images fade-up delay-2">
+    <div class="hero-img-main">
+      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80" alt="Construction Site" onerror="this.parentElement.classList.add('img-construction');this.style.display='none'"/>
+    </div>
+    <div class="hero-img-sm">
+      <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80" alt="Interior Design" onerror="this.parentElement.classList.add('img-construction');this.style.display='none'"/>
+    </div>
+    <div class="hero-img-sm">
+      <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" alt="Modern Architecture" onerror="this.parentElement.classList.add('img-construction');this.style.display='none'"/>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Projects Completed</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">8</div>
+    <div class="stat-label">Core Services</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Client Satisfaction</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Our <span>Services</span></h2>
+    <p class="section-desc">Comprehensive construction and design solutions delivered with precision, expertise, and a commitment to your vision.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏗️</div>
+      <div class="service-name">Building Construction</div>
+      <p class="service-desc">Full-scale residential and commercial construction built to last, on time and within budget.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛋️</div>
+      <div class="service-name">Interior Designing</div>
+      <p class="service-desc">Elegant, functional interiors crafted to reflect your personality and lifestyle preferences.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📐</div>
+      <div class="service-name">Digital Surveying</div>
+      <p class="service-desc">Precision digital land and building surveys using advanced modern instrumentation.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏛️</div>
+      <div class="service-name">3D Elevations</div>
+      <p class="service-desc">Realistic 3D architectural elevation designs to visualize your building before construction begins.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💼</div>
+      <div class="service-name">Consulting</div>
+      <p class="service-desc">Expert civil engineering consulting for projects of all scales and complexities.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <div class="service-name">Approval Works</div>
+      <p class="service-desc">End-to-end building plan approvals and government documentation handled seamlessly.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🧭</div>
+      <div class="service-name">Vastu Planner</div>
+      <p class="service-desc">Traditional Vastu Shastra-compliant planning to bring harmony and prosperity to your space.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚙️</div>
+      <div class="service-name">Structural Designing</div>
+      <p class="service-desc">Safe, certified structural designs that meet all engineering standards and regulatory codes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-images">
+    <div class="about-img-main">
+      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80" alt="Construction Work" onerror="this.style.background='linear-gradient(135deg,#1a9fd4,#0d2b45)'"/>
+    </div>
+    <div class="about-badge">
+      <strong>10+</strong>
+      <span>Years of<br/>Excellence</span>
+    </div>
+  </div>
+  <div class="about-content">
+    <div class="section-tag">Who We Are</div>
+    <h2 class="section-title">Building Dreams<br/>with <span>Integrity</span></h2>
+    <p class="section-desc">
+      Blue Arch Construction & Interiors is a Dharapuram-based firm led by experienced civil engineer 
+      Er. D. Suresh Kumar. We combine technical expertise with creative design to deliver spaces 
+      that exceed expectations — from the foundation to the finishing touches.
+    </p>
+    <ul class="about-list">
+      <li><span></span>Licensed Engineers</li>
+      <li><span></span>Quality Materials</li>
+      <li><span></span>Transparent Pricing</li>
+      <li><span></span>On-Time Delivery</li>
+      <li><span></span>Vastu Compliant</li>
+      <li><span></span>Digital Planning</li>
+    </ul>
+    <a href="#contact" class="btn-primary">Start Your Project</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-header">
+    <div>
+      <div class="section-tag">Our Work</div>
+      <h2 class="section-title">Featured <span>Projects</span></h2>
+    </div>
+    <p class="section-desc" style="max-width:300px">A glimpse into the spaces we have designed, built, and transformed.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80" alt="Modern Villa" onerror="this.parentNode.innerHTML='<div class=\'ph ph-1\'>Modern Villa</div>'"/>
+      <div class="gallery-overlay"><div class="gallery-overlay-text">Modern Villa</div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Interior Design" onerror="this.parentNode.innerHTML='<div class=\'ph ph-2\'>Interior Design</div>'"/>
+      <div class="gallery-overlay"><div class="gallery-overlay-text">Luxury Interior</div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Construction" onerror="this.parentNode.innerHTML='<div class=\'ph ph-3\'>Construction</div>'"/>
+      <div class="gallery-overlay"><div class="gallery-overlay-text">Site Survey</div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Residence" onerror="this.parentNode.innerHTML='<div class=\'ph ph-4\'>Residence</div>'"/>
+      <div class="gallery-overlay"><div class="gallery-overlay-text">Dream Residence</div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80" alt="3D Elevation" onerror="this.parentNode.innerHTML='<div class=\'ph ph-5\'>3D Elevation</div>'"/>
+      <div class="gallery-overlay"><div class="gallery-overlay-text">3D Elevation</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPRIETOR -->
+<section id="proprietor">
+  <div class="section-tag" style="text-align:center">Meet the Expert</div>
+  <h2 class="section-title" style="text-align:center;margin-bottom:48px">Our <span>Proprietor</span></h2>
+  <div class="prop-card">
+    <div class="prop-avatar">SK</div>
+    <div class="prop-tag">Proprietor</div>
+    <div class="prop-name">Er. D. Suresh Kumar</div>
+    <div class="prop-qual">B.E., Civil &nbsp;|&nbsp; GDID.</div>
+    <div class="prop-contacts">
+      <div class="prop-contact-row">
+        <div class="icon">📱</div>
+        <span>97504 19017 &nbsp;|&nbsp; 89035 78664</span>
+      </div>
+      <div class="prop-contact-row">
+        <div class="icon">✉️</div>
+        <span>bluearch123@gmail.com</span>
+      </div>
+      <div class="prop-contact-row">
+        <div class="icon">📍</div>
+        <span>Lions Club Opp., Udumalai Road, Dharapuram – 638 656</span>
+      </div>
+      <div class="prop-contact-row">
+        <div class="icon">📸</div>
+        <span>@surezz6 on Instagram</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Ready to Build<br/><span>Your Dream?</span></h2>
+      <p>Reach out to us for a free consultation. Whether it's a new home, an interior makeover, or a structural project — we're here to make it happen.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <div class="contact-item-label">Phone / WhatsApp</div>
+            <div class="contact-item-value">97504 19017<br/>89035 78664</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value">bluearch123@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Address</div>
+            <div class="contact-item-value">Lions Club Opp., Udumalai Road,<br/>Dharapuram – 638 656</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📸</div>
+          <div>
+            <div class="contact-item-label">Instagram</div>
+            <div class="contact-item-value">@surezz6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-title">Send Us a Message</div>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your full name"/>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+91 XXXXX XXXXX"/>
+      </div>
+      <div class="form-group">
+        <label>Service Required</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Building Construction</option>
+          <option>Interior Designing</option>
+          <option>Digital Surveying</option>
+          <option>3D Elevations</option>
+          <option>Consulting</option>
+          <option>Approval Works</option>
+          <option>Vastu Planning</option>
+          <option>Structural Designing</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Describe your project or requirements..."></textarea>
+      </div>
+      <button class="form-btn" onclick="alert('Thank you! We will contact you shortly.')">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Blue Arch Construction & Interiors</div>
+  <div>© 2025 Blue Arch. All Rights Reserved. Dharapuram, Tamil Nadu.</div>
+  <div>Designed with ❤️ for Excellence</div>
+</footer>
+
+</body>
+</html>

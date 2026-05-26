@@ -3,9 +3,10 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
+        stage('Checkout Code') {
             steps {
-                git 'https://github.com/USERNAME/bluearch-website.git'
+                git branch: 'main',
+                url: 'https://github.com/Samratstackly/bluearch.git'
             }
         }
 
